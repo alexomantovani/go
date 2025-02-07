@@ -1,4 +1,4 @@
-import 'package:go/core/errors/serialization_error.dart';
+import 'package:go/core/errors/exceptions.dart';
 
 class CoreUtils {
   const CoreUtils._();
@@ -8,13 +8,12 @@ class CoreUtils {
     return requiredKeys.every((key) => map.containsKey(key));
   }
 
-  static throwsSerializationError(
+  static throwsSerializationException(
       {required Map<String, dynamic> map, required List<String> requiredKeys}) {
-    if (containsRequiredKeys(map, requiredKeys)) {
-      throw SerializationError(
-        message: 'Missing required field(s) in the map.',
+    if (!containsRequiredKeys(map, requiredKeys)) {
+      throw SerializationException(
         error:
-            'One or more required fields are missing: tempoFormatado, tempo, valor, valorTotal, temCortesia, desconto.',
+            'One or more required fields are missing: ${requiredKeys.where((key) => !map.containsKey(key)).join(', ')}.',
       );
     }
   }

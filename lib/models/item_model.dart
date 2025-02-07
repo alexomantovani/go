@@ -1,3 +1,7 @@
+import 'package:go/core/enums/model_type.dart';
+import 'package:go/core/errors/exceptions.dart';
+import 'package:go/core/utils/constants.dart';
+import 'package:go/core/utils/core_utils.dart';
 import 'package:go/entities/item.dart';
 
 class ItemModel extends Item {
@@ -31,12 +35,20 @@ class ItemModel extends Item {
   }
 
   factory ItemModel.fromMap(Map<String, dynamic> map) {
-    if (!map.containsKey('nome')) {
-      throw Error();
+    try {
+      CoreUtils.throwsSerializationException(
+        map: map,
+        requiredKeys: Constants.objectKeysList[ModelType.item.name],
+      );
+
+      return ItemModel(
+        nome: map['nome'] != null ? map['nome'] as String : null,
+      );
+    } catch (e) {
+      throw SerializationException(
+        error: e.toString(),
+      );
     }
-    return ItemModel(
-      nome: map['nome'] != null ? map['nome'] as String : null,
-    );
   }
 
   @override

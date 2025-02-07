@@ -1,4 +1,7 @@
-import 'package:go/core/errors/serialization_error.dart';
+import 'package:go/core/enums/model_type.dart';
+import 'package:go/core/errors/exceptions.dart';
+import 'package:go/core/utils/constants.dart';
+import 'package:go/core/utils/core_utils.dart';
 import 'package:go/entities/periodo.dart';
 import 'package:go/models/desconto_model.dart';
 
@@ -76,18 +79,10 @@ class PeriodoModel extends Periodo {
 
   factory PeriodoModel.fromMap(Map<String, dynamic> map) {
     try {
-      if (!map.containsKey('tempoFormatado') ||
-          !map.containsKey('tempo') ||
-          !map.containsKey('valor') ||
-          !map.containsKey('valorTotal') ||
-          !map.containsKey('temCortesia') ||
-          !map.containsKey('desconto')) {
-        throw SerializationError(
-          message: 'Missing required field(s) in the map.',
-          error:
-              'One or more required fields are missing: tempoFormatado, tempo, valor, valorTotal, temCortesia, desconto.',
-        );
-      }
+      CoreUtils.throwsSerializationException(
+        map: map,
+        requiredKeys: Constants.objectKeysList[ModelType.periodo.name],
+      );
 
       return PeriodoModel(
         tempoFormatado: map['tempoFormatado'] as String? ?? '',
@@ -100,7 +95,7 @@ class PeriodoModel extends Periodo {
             : null,
       );
     } catch (e) {
-      throw SerializationError(
+      throw SerializationException(
         message: 'Error deserializing PeriodoModel from map.',
         error: e.toString(),
       );

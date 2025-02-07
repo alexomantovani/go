@@ -1,3 +1,7 @@
+import 'package:go/core/enums/model_type.dart';
+import 'package:go/core/errors/exceptions.dart';
+import 'package:go/core/utils/constants.dart';
+import 'package:go/core/utils/core_utils.dart';
 import 'package:go/entities/motel.dart';
 import 'package:go/models/suite_model.dart';
 
@@ -87,25 +91,34 @@ class MotelModel extends Motel {
   }
 
   factory MotelModel.fromMap(Map<String, dynamic> map) {
-    if (!map.containsKey('suites')) {
-      throw Error();
+    try {
+      CoreUtils.throwsSerializationException(
+        map: map,
+        requiredKeys: Constants.objectKeysList[ModelType.motel.name],
+      );
+
+      return MotelModel(
+        fantasia: map['fantasia'] != null ? map['fantasia'] as String : null,
+        logo: map['logo'] != null ? map['logo'] as String : null,
+        bairro: map['bairro'] != null ? map['bairro'] as String : null,
+        distancia: map['distancia'] != null ? map['distancia'] as double : null,
+        qtdFavoritos:
+            map['qtdFavoritos'] != null ? map['qtdFavoritos'] as int : null,
+        suites: map['suites'] != null
+            ? (map['suites'] as List<dynamic>)
+                .map((suite) =>
+                    SuiteModel.fromMap(suite as Map<String, dynamic>))
+                .toList()
+            : null,
+        qtdAvaliacoes:
+            map['qtdAvaliacoes'] != null ? map['qtdAvaliacoes'] as int : null,
+        media: map['media'] != null ? map['media'] as double : null,
+      );
+    } catch (e) {
+      throw SerializationException(
+        error: e.toString(),
+      );
     }
-    return MotelModel(
-      fantasia: map['fantasia'] != null ? map['fantasia'] as String : null,
-      logo: map['logo'] != null ? map['logo'] as String : null,
-      bairro: map['bairro'] != null ? map['bairro'] as String : null,
-      distancia: map['distancia'] != null ? map['distancia'] as double : null,
-      qtdFavoritos:
-          map['qtdFavoritos'] != null ? map['qtdFavoritos'] as int : null,
-      suites: map['suites'] != null
-          ? (map['suites'] as List<dynamic>)
-              .map((suite) => SuiteModel.fromMap(suite as Map<String, dynamic>))
-              .toList()
-          : null,
-      qtdAvaliacoes:
-          map['qtdAvaliacoes'] != null ? map['qtdAvaliacoes'] as int : null,
-      media: map['media'] != null ? map['media'] as double : null,
-    );
   }
 
   @override
