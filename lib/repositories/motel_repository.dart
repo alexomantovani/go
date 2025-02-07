@@ -18,15 +18,16 @@ class MotelRepository {
       if (response.statusCode == 200) {
         final DataMap decodedResponse = jsonDecode(response.body);
 
-        if (!decodedResponse.containsKey('data') ||
-            decodedResponse['data'] == null) {
+        final motelsData = decodedResponse['data']?['moteis'];
+
+        if (motelsData == null || motelsData is! List || motelsData.isEmpty) {
           throw ServerException(
             message: 'Missing required data from server',
             statusCode: 1,
           );
         }
 
-        final List<dynamic> data = decodedResponse['data'];
+        final List<dynamic> data = decodedResponse['data']['moteis'];
         if (data.isEmpty) {
           throw ServerException(
             message: 'Missing required data from server',
