@@ -1,3 +1,7 @@
+import 'package:go/core/enums/model_type.dart';
+import 'package:go/core/errors/exceptions.dart';
+import 'package:go/core/utils/constants.dart';
+import 'package:go/core/utils/core_utils.dart';
 import 'package:go/entities/suite.dart';
 import 'package:go/models/categoria_item_model.dart';
 import 'package:go/models/item_model.dart';
@@ -82,40 +86,50 @@ class SuiteModel extends Suite {
   }
 
   factory SuiteModel.fromMap(Map<String, dynamic> map) {
-    if (!map.containsKey('nome')) {
-      throw Error();
+    try {
+      CoreUtils.throwsSerializationException(
+        map: map,
+        requiredKeys: Constants.objectKeysList[ModelType.suite.name],
+      );
+
+      return SuiteModel(
+        nome: map['nome'] != null ? map['nome'] as String : null,
+        qtd: map['qtd'] != null ? map['qtd'] as int : null,
+        exibirQtdDisponiveis: map['exibirQtdDisponiveis'] != null
+            ? map['exibirQtdDisponiveis'] as bool
+            : null,
+        fotos: map['fotos'] != null
+            ? (map['fotos'] as List<dynamic>).map((e) => e.toString()).toList()
+            : null,
+        itens: map['itens'] != null
+            ? List<ItemModel>.from(
+                (map['itens'] as List<dynamic>).map<ItemModel?>(
+                  (x) => ItemModel.fromMap(x as Map<String, dynamic>),
+                ),
+              )
+            : null,
+        categoriaItens: map['categoriaItens'] != null
+            ? List<CategoriaItemModel>.from(
+                (map['categoriaItens'] as List<dynamic>)
+                    .map<CategoriaItemModel?>(
+                  (x) => CategoriaItemModel.fromMap(x as Map<String, dynamic>),
+                ),
+              )
+            : null,
+        periodos: map['periodos'] != null
+            ? List<PeriodoModel>.from(
+                (map['periodos'] as List<dynamic>).map<PeriodoModel?>(
+                  (x) => PeriodoModel.fromMap(x as Map<String, dynamic>),
+                ),
+              )
+            : null,
+      );
+    } catch (e) {
+      throw SerializationException(
+        message: 'Error deserializing PeriodoModel from map.',
+        error: e.toString(),
+      );
     }
-    return SuiteModel(
-      nome: map['nome'] != null ? map['nome'] as String : null,
-      qtd: map['qtd'] != null ? map['qtd'] as int : null,
-      exibirQtdDisponiveis: map['exibirQtdDisponiveis'] != null
-          ? map['exibirQtdDisponiveis'] as bool
-          : null,
-      fotos: map['fotos'] != null
-          ? (map['fotos'] as List<dynamic>).map((e) => e.toString()).toList()
-          : null,
-      itens: map['itens'] != null
-          ? List<ItemModel>.from(
-              (map['itens'] as List<dynamic>).map<ItemModel?>(
-                (x) => ItemModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-      categoriaItens: map['categoriaItens'] != null
-          ? List<CategoriaItemModel>.from(
-              (map['categoriaItens'] as List<dynamic>).map<CategoriaItemModel?>(
-                (x) => CategoriaItemModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-      periodos: map['periodos'] != null
-          ? List<PeriodoModel>.from(
-              (map['periodos'] as List<dynamic>).map<PeriodoModel?>(
-                (x) => PeriodoModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-    );
   }
 
   @override

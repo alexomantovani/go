@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go/core/errors/serialization_error.dart';
+import 'package:go/core/errors/exceptions.dart';
+
 import 'package:go/core/utils/typedefs.dart';
 import 'package:go/entities/periodo.dart';
 import 'package:go/models/periodo_model.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final tPeriodoModel = PeriodoModel.empty();
@@ -30,7 +31,7 @@ void main() {
 
       const methodCall = PeriodoModel.fromMap;
 
-      expect(() => methodCall(map), throwsA(isA<SerializationError>()));
+      expect(() => methodCall(map), throwsA(isA<SerializationException>()));
     });
   });
 

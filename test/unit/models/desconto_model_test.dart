@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go/core/errors/exceptions.dart';
 import 'package:go/core/utils/typedefs.dart';
 import 'package:go/entities/desconto.dart';
 import 'package:go/models/desconto_model.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final tDescontoModelel = DescontoModel.empty();
@@ -24,12 +25,13 @@ void main() {
       expect(result, tDescontoModelel);
     });
 
-    test('should throw an [Error] when the map is invalid', () {
+    test('should throw an [SerializationException] when the map is invalid',
+        () {
       final map = DataMap.from(tMap)..remove('desconto');
 
       const methodCall = DescontoModel.fromMap;
 
-      expect(() => methodCall(map), throwsA(isA<Error>()));
+      expect(() => methodCall(map), throwsA(isA<SerializationException>()));
     });
   });
 

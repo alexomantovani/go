@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go/core/errors/exceptions.dart';
 import 'package:go/core/utils/typedefs.dart';
 import 'package:go/entities/item.dart';
 import 'package:go/models/item_model.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final tItemModel = ItemModel.empty();
@@ -24,12 +25,13 @@ void main() {
       expect(result, tItemModel);
     });
 
-    test('should throw an [Error] when the map is invalid', () {
+    test('should throw an [SerializationException] when the map is invalid',
+        () {
       final map = DataMap.from(tMap)..remove('nome');
 
       const methodCall = ItemModel.fromMap;
 
-      expect(() => methodCall(map), throwsA(isA<Error>()));
+      expect(() => methodCall(map), throwsA(isA<SerializationException>()));
     });
   });
 

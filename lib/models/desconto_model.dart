@@ -1,3 +1,7 @@
+import 'package:go/core/enums/model_type.dart';
+import 'package:go/core/errors/exceptions.dart';
+import 'package:go/core/utils/constants.dart';
+import 'package:go/core/utils/core_utils.dart';
 import 'package:go/entities/desconto.dart';
 
 class DescontoModel extends Desconto {
@@ -30,12 +34,20 @@ class DescontoModel extends Desconto {
   }
 
   factory DescontoModel.fromMap(Map<String, dynamic> map) {
-    if (!map.containsKey('desconto')) {
-      throw Error();
+    try {
+      CoreUtils.throwsSerializationException(
+        map: map,
+        requiredKeys: Constants.objectKeysList[ModelType.desconto.name],
+      );
+
+      return DescontoModel(
+        desconto: map['desconto'] != null ? map['desconto'] as double : null,
+      );
+    } catch (e) {
+      throw SerializationException(
+        error: e.toString(),
+      );
     }
-    return DescontoModel(
-      desconto: map['desconto'] != null ? map['desconto'] as double : null,
-    );
   }
 
   @override
