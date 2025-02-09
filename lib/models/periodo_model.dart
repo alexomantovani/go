@@ -87,8 +87,8 @@ class PeriodoModel extends Periodo {
       return PeriodoModel(
         tempoFormatado: map['tempoFormatado'] as String? ?? '',
         tempo: map['tempo'] as String? ?? '',
-        valor: map['valor'] as double? ?? 0.0,
-        valorTotal: map['valorTotal'] as double? ?? 0.0,
+        valor: (map['valor'] as num?)?.toDouble(), // Conversão segura
+        valorTotal: (map['valorTotal'] as num?)?.toDouble(), // Conversão segura
         temCortesia: map['temCortesia'] as bool? ?? false,
         desconto: map['desconto'] != null
             ? DescontoModel.fromMap(map['desconto'] as Map<String, dynamic>)
