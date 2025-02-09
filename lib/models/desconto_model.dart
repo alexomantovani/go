@@ -41,7 +41,9 @@ class DescontoModel extends Desconto {
       );
 
       return DescontoModel(
-        desconto: map['desconto'] != null ? map['desconto'] as double : null,
+        desconto: map['desconto'] != null
+            ? (map['desconto'] as num?)?.toDouble()
+            : null,
       );
     } catch (e) {
       throw SerializationException(
