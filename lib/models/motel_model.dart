@@ -101,7 +101,9 @@ class MotelModel extends Motel {
         fantasia: map['fantasia'] != null ? map['fantasia'] as String : null,
         logo: map['logo'] != null ? map['logo'] as String : null,
         bairro: map['bairro'] != null ? map['bairro'] as String : null,
-        distancia: map['distancia'] != null ? map['distancia'] as double : null,
+        distancia: map['distancia'] != null
+            ? (map['distancia'] as num?)?.toDouble()
+            : null,
         qtdFavoritos:
             map['qtdFavoritos'] != null ? map['qtdFavoritos'] as int : null,
         suites: map['suites'] != null
@@ -112,7 +114,7 @@ class MotelModel extends Motel {
             : null,
         qtdAvaliacoes:
             map['qtdAvaliacoes'] != null ? map['qtdAvaliacoes'] as int : null,
-        media: map['media'] != null ? map['media'] as double : null,
+        media: map['media'] != null ? (map['media'] as num?)?.toDouble() : null,
       );
     } catch (e) {
       throw SerializationException(
