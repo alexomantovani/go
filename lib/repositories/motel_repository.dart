@@ -13,7 +13,8 @@ class MotelRepository {
 
   Future<List<MotelModel>> getMotels() async {
     try {
-      final response = await client.get(Uri.parse(Environments.prod));
+      final response =
+          await client.get(Uri.parse('${Environments.prod}/getMotels'));
 
       if (response.statusCode == 200) {
         final DataMap decodedResponse = jsonDecode(response.body);

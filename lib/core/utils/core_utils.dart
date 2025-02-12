@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go/core/errors/exceptions.dart';
 
 class CoreUtils {
@@ -16,5 +17,17 @@ class CoreUtils {
             'One or more required fields are missing: ${requiredKeys.where((key) => !map.containsKey(key)).join(', ')}.',
       );
     }
+  }
+
+  static void openModal({
+    required BuildContext context,
+    required Widget child,
+    void Function()? action,
+  }) async {
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => child,
+    );
   }
 }
