@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/extensions/string_ext.dart';
 import '../core/extensions/context_ext.dart';
 import '../core/services/styles.dart';
 import '../models/suite_model.dart';
@@ -22,7 +23,7 @@ class CategoryItemPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 50.0),
             child: Text(
-              suite.nome!,
+              suite.nome!.suiteName,
               style: context.textTheme.titleLarge!
                   .copyWith(color: Styles.kPrimaryText),
             ),
