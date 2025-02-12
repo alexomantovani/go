@@ -1,17 +1,24 @@
 # 📱 go
 
 Este aplicativo apresenta um guia motéis, permitindo o usuário visualizar com bastante detalhes e decidir o melhor custo beneficio.
-  
+
 ## 🚀 Tecnologias Utilizadas
 
-- **Linguagem:** Dart  
-- **Framework:** Flutter  
+- **Linguagem:** Dart
+- **Framework:** Flutter
 - **Arquitetura:** MVVM + Clean Archtecture
 - **Padrão de UI:** Widgets e Views
 - **Gerenciamento de estado:** flutter_bloc e provider
 - **Adaptação no Backend:** Foi desenvolvido um endpoint com uma micro API em Node.js serveless hospedada no Firebase functions.
 
 ## 📸 Capturas de Tela
+
+<p align="center">
+  <img src="assets/1000074340.png" width="300" height="650"/>
+  <img src="assets/1000074341.png" width="300" height="650"/>
+  <img src="assets/1000074342.png" width="300" height="650"/>
+  <img src="assets/1000074343.png" width="300" height="650"/>
+</p>
 
 ## ✅ Unit Tests
 
@@ -56,37 +63,37 @@ dev_dependencies:
 
 ```
 lib/
-├── app/                    
-│   ├── app.dart            
-│   ├── models/             
+├── app/
+│   ├── app.dart
+│   ├── models/
 │   │   ├── categoria_item_model.dart
 │   │   ├── desconto_model.dart
 │   │   ├── item_model.dart
 │   │   ├── motel_model.dart
 │   │   ├── periodo_model.dart
 │   │   └── suite_model.dart
-│   ├── repositories/       
+│   ├── repositories/
 │   │   └── motel_repository.dart
-│   ├── services/           
+│   ├── services/
 │   │   ├── assets.dart
 │   │   └── motel_carousel_provider.dart
-│   ├── viewmodel/          
+│   ├── viewmodel/
 │   │   ├── motel_bloc.dart
 │   │   ├── motel_event.dart
 │   │   └── motel_state.dart
-│   └── views/              
-│       ├── pages/          
+│   └── views/
+│       ├── pages/
 │       │   ├── category_item_page.dart
 │       │   ├── home_page.dart
 │       │   ├── image_grid_page.dart
 │       │   ├── suite_page.dart
 │       │   └── under_construction_page.dart
-│       ├── atoms/          
+│       ├── atoms/
 │       │   ├── custom_app_bar.dart
 │       │   ├── custom_floating_button.dart
 │       │   ├── home_body.dart
 │       │   └── loading_widget.dart
-│       ├── molecules/      
+│       ├── molecules/
 │       │   ├── error_widget.dart
 │       │   ├── motel_carousel_item.dart
 │       │   ├── motel_carousel.dart
@@ -96,32 +103,32 @@ lib/
 │       │   ├── suite_header.dart
 │       │   ├── suite_list_view.dart
 │       │   └── suite_periodos.dart
-├── core/                   
-│   ├── extensions/             
+├── core/
+│   ├── extensions/
 │   │   ├── context_ext.dart
 │   │   ├── string_ext.dart
 │   ├── providers/
 │   │   └── toggle_provider.dart
-│   │   ├── motel_carousel_provider.dart              
-│   ├── services/              
+│   │   ├── motel_carousel_provider.dart
+│   ├── services/
 │   │   └── styles.dart
-│   │   ├── assets.dart    
-│   ├── utils/                 
+│   │   ├── assets.dart
+│   ├── utils/
 │   │   ├── core_utils.dart
 │   │   ├── typedefs.dart
 │   │   └── constatans.dart
 │   ├── errors/
-│   │   ├── exceptions.dart             
-│   ├── enums/              
+│   │   ├── exceptions.dart
+│   ├── enums/
 │   │   └── model_type.dart
-│   ├── environments/       
+│   ├── environments/
 │   │   └── environments.dart
-├── assets/                  
-│   ├── icons/              
+├── assets/
+│   ├── icons/
 │   │   └── menu.svg
-│   ├── images/             
-│   │   └── under_construction.jpg      
-└── main.dart               
+│   ├── images/
+│   │   └── under_construction.jpg
+└── main.dart
 
 
 ```
