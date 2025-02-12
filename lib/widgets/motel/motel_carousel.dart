@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/services/motel_carousel_provider.dart';
+import '../../core/providers/motel_carousel_provider.dart';
 import '../../core/services/styles.dart';
 import '../../models/motel_model.dart';
 import '../../views/suite_page.dart';
