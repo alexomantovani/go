@@ -36,7 +36,8 @@ class SliderDots extends StatelessWidget {
                       color: (Theme.of(context).brightness == Brightness.dark
                               ? Colors.white
                               : Colors.black)
-                          .withValues(alpha: _current == entry.key ? 0.9 : 0.4),
+                          .withValues(
+                              alpha: _current == entry.key ? 0.75 : 0.4),
                     ),
                   ),
                 );

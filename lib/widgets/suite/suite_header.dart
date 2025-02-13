@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/extensions/context_ext.dart';
@@ -23,8 +24,8 @@ class SuiteHeader extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Image.network(
-              motel.logo!,
+            child: CachedNetworkImage(
+              imageUrl: motel.logo!,
               fit: BoxFit.cover,
               height: 40,
             ),

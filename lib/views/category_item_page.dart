@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../core/extensions/string_ext.dart';
@@ -44,8 +45,8 @@ class CategoryItemPage extends StatelessWidget {
                 .map(
                   (item) => Wrap(
                     children: [
-                      Image.network(
-                        item.icone!,
+                      CachedNetworkImage(
+                        imageUrl: item.icone!,
                         height: 25.0,
                       ),
                       Text(
