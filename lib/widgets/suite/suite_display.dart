@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/extensions/string_ext.dart';
@@ -27,8 +28,8 @@ class SuiteDisplay extends StatelessWidget {
           if (image != null)
             ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
-              child: Image.network(
-                image!,
+              child: CachedNetworkImage(
+                imageUrl: image!,
               ),
             ),
           Text(name!.suiteName),

@@ -9,7 +9,7 @@ import '../widgets/common/custom_app_bar.dart';
 import '../widgets/common/custom_floating_button.dart';
 import '../widgets/common/home_body.dart';
 import '../widgets/common/loading_widget.dart';
-import '../widgets/motel/error_widget.dart';
+import '../widgets/motel/error_message_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
