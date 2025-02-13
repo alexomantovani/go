@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/extensions/context_ext.dart';
@@ -27,8 +28,8 @@ class SuiteCateogoryItem extends StatelessWidget {
             children: List.generate(
               categoriaItens!.length,
               (index) => index <= 3
-                  ? Image.network(
-                      categoriaItens![index].icone!,
+                  ? CachedNetworkImage(
+                      imageUrl: categoriaItens![index].icone!,
                       height: 26,
                     )
                   : const SizedBox.shrink(),
@@ -36,12 +37,9 @@ class SuiteCateogoryItem extends StatelessWidget {
           ),
           Row(
             children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'ver todos',
-                  style: context.textTheme.bodySmall,
-                ),
+              Text(
+                'ver todos',
+                style: context.textTheme.bodySmall,
               ),
               Icon(
                 Icons.keyboard_arrow_down_rounded,

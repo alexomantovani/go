@@ -41,7 +41,7 @@ class MotelCarousel extends StatelessWidget {
                   color: Styles.kStandardWhite,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                height: 220,
+                height: 190,
                 width: double.infinity,
                 margin: EdgeInsets.all(12),
                 padding: EdgeInsets.symmetric(horizontal: 12),
@@ -49,6 +49,7 @@ class MotelCarousel extends StatelessWidget {
                   carouselController: carouselSliderController,
                   itemCount: motels.length,
                   itemBuilder: (context, index, realIndex) {
+                    provider.setMotelCarouselItemInfo(motel: motels[index]);
                     return MotelCarouselItem(motel: motels[index]);
                   },
                   options: CarouselOptions(

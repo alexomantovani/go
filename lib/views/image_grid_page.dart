@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../core/services/styles.dart';
@@ -20,8 +21,8 @@ class ImageGridPage extends StatelessWidget {
           crossAxisSpacing: 12.0,
         ),
         itemCount: photos!.length,
-        itemBuilder: (context, index) => Image.network(
-          photos![index],
+        itemBuilder: (context, index) => CachedNetworkImage(
+          imageUrl: photos![index],
         ),
       ),
     );
