@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../core/services/styles.dart';
+import '../core/utils/core_utils.dart';
+import '../widgets/common/modal_carousel.dart';
 
 class ImageGridPage extends StatelessWidget {
   const ImageGridPage({super.key, required this.photos});
@@ -21,8 +23,16 @@ class ImageGridPage extends StatelessWidget {
           crossAxisSpacing: 12.0,
         ),
         itemCount: photos!.length,
-        itemBuilder: (context, index) => CachedNetworkImage(
-          imageUrl: photos![index],
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () => CoreUtils.openModal(
+            context: context,
+            child: ModalCarousel(
+              photos: photos,
+            ),
+          ),
+          child: CachedNetworkImage(
+            imageUrl: photos![index],
+          ),
         ),
       ),
     );

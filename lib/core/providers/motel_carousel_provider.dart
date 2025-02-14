@@ -6,6 +6,12 @@ class MotelCarouselProvider extends ChangeNotifier {
   int _current = 0;
   int get current => _current;
 
+  final PageController _pageController = PageController();
+  PageController get pageController => _pageController;
+
+  int _pageIndex = 0;
+  int get pageIndex => _pageIndex;
+
   MotelModel? _motel;
   MotelModel? get motel => _motel;
 
@@ -20,6 +26,11 @@ class MotelCarouselProvider extends ChangeNotifier {
 
   void setCurrent(int index) {
     _current = index;
+    notifyListeners();
+  }
+
+  void setPageIndex(int index) {
+    _pageIndex = index;
     notifyListeners();
   }
 
