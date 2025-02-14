@@ -42,7 +42,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   create: (_) => ToggleProvider(),
                   child: Consumer<ToggleProvider>(
                     builder: (context, provider, child) => ToggleButtons(
-                      isSelected: [!provider.isSelected, provider.isSelected],
+                      isSelected: [provider.isSelected, !provider.isSelected],
                       onPressed: (index) =>
                           provider.setSelected(!provider.isSelected),
                       borderRadius: BorderRadius.circular(50),
@@ -51,7 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: provider.isSelected
+                            color: !provider.isSelected
                                 ? Styles.kStandardWhite
                                 : Colors.transparent,
                           ),
@@ -60,14 +60,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             children: [
                               Icon(
                                 Icons.electric_bolt_rounded,
-                                color: !provider.isSelected
+                                color: provider.isSelected
                                     ? Styles.kStandardWhite
                                     : Styles.kPrimaryRed,
                               ),
                               Text(
                                 'ir agora',
                                 style: context.textTheme.titleSmall!.copyWith(
-                                    color: !provider.isSelected
+                                    color: provider.isSelected
                                         ? Styles.kStandardWhite
                                         : Styles.kPrimaryText),
                               ),
@@ -78,7 +78,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           padding: EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: !provider.isSelected
+                            color: provider.isSelected
                                 ? Styles.kStandardWhite
                                 : Colors.transparent,
                           ),
@@ -86,14 +86,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             children: [
                               Icon(
                                 Icons.event_available,
-                                color: provider.isSelected
+                                color: !provider.isSelected
                                     ? Styles.kStandardWhite
                                     : Styles.kPrimaryRed,
                               ),
                               Text(
                                 'ir outro dia',
                                 style: context.textTheme.titleSmall!.copyWith(
-                                  color: provider.isSelected
+                                  color: !provider.isSelected
                                       ? Styles.kStandardWhite
                                       : Styles.kPrimaryText,
                                 ),
