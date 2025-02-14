@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go/bloc/motel_bloc.dart';
-import 'package:go/views/under_construction_page.dart';
+
+import '../../bloc/motel_bloc.dart';
+import '../../views/under_construction_page.dart';
 
 extension ContextExt on BuildContext {
   TextTheme get textTheme => TextTheme.of(this);
