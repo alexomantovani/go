@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/motel_bloc.dart';
+import '../../views/authentication_page.dart';
 import '../../views/under_construction_page.dart';
 
 extension ContextExt on BuildContext {
@@ -20,6 +21,12 @@ extension ContextExt on BuildContext {
   Future<dynamic> get underConstructionPage => Navigator.of(this).push(
         MaterialPageRoute(
           builder: (context) => UnderConstructionPage(),
+        ),
+      );
+
+  Future<dynamic> get authenticationPage => Navigator.of(this).push(
+        MaterialPageRoute(
+          builder: (context) => AuthenticationPage(),
         ),
       );
 }

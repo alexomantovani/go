@@ -63,7 +63,7 @@ class ModalCarousel extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      provider.pageIndex.toString(),
+                      (provider.pageIndex + 1).toString(),
                     ),
                     Opacity(
                       opacity: provider.pageIndex < photos!.length - 1 ? 1 : 0,

@@ -35,7 +35,6 @@ void main() {
       ),
     );
 
-    // Verifica se o Container correto está presente com a cor de fundo esperada
     expect(
         find.byWidgetPredicate((widget) =>
             widget is Container &&
@@ -43,10 +42,8 @@ void main() {
             (widget.decoration as BoxDecoration).color == Styles.kPrimaryPale),
         findsOneWidget);
 
-    // Verifica se o MotelCarousel está presente
     expect(find.byType(MotelCarousel), findsOneWidget);
 
-    // Verifica se o SuiteListView está presente
     expect(find.byType(SuiteListView), findsOneWidget);
   });
 

@@ -166,7 +166,7 @@ class SuiteHeader extends StatelessWidget {
             ],
           ),
           IconButton(
-            onPressed: () => context.underConstructionPage,
+            onPressed: () => context.authenticationPage,
             icon: Icon(
               Icons.favorite_rounded,
               color: Styles.kPrimaryGrey,

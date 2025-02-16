@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go/models/motel_model.dart';
 import 'package:go/models/periodo_model.dart';
+import 'package:go/models/suite_model.dart';
 
 class MotelCarouselProvider extends ChangeNotifier {
   int _current = 0;
@@ -14,6 +15,9 @@ class MotelCarouselProvider extends ChangeNotifier {
 
   MotelModel? _motel;
   MotelModel? get motel => _motel;
+
+  SuiteModel? _suite;
+  SuiteModel? get suite => _suite;
 
   String? _lastSuiteFirstPhoto;
   String? get lastSuiteFirstPhoto => _lastSuiteFirstPhoto;
@@ -58,14 +62,6 @@ class MotelCarouselProvider extends ChangeNotifier {
         .map((p) => p.desconto!.desconto)
         .firstOrNull;
   }
-
-  // void setLowestPrice() {
-  //   _lowestPrice = _motel!.suites
-  //       ?.expand((suite) => suite.periodos ?? <PeriodoModel>[])
-  //       .where((p) => p.valorTotal != null)
-  //       .map((p) => p.valorTotal)
-  //       .reduce((a, b) => (a! < b!) ? a : b);
-  // }
 
   void setLowestPrice() {
     _lowestPrice = _motel!.suites
