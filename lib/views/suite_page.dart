@@ -22,6 +22,7 @@ class SuitePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Styles.kPrimaryRed,
         leading: IconButton(
+          key: const Key('suite_page_iconButton'),
           onPressed: () => Navigator.pop(context),
           icon: Icon(
             Icons.arrow_back_rounded,
@@ -30,6 +31,7 @@ class SuitePage extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
+          key: const Key('suite_page_motel_fantasia'),
           motel.fantasia!,
           style: context.textTheme.titleMedium!.copyWith(
             color: Styles.kStandardWhite,
