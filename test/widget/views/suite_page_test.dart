@@ -21,8 +21,7 @@ void main() {
     );
   }
 
-  testWidgets(
-      "Verifica se os elementos principais da SuitePage são renderizados",
+  testWidgets("Checks whether the main elements of the SuitePage are rendered",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(SuitePage(
       motel: motel,
@@ -35,7 +34,7 @@ void main() {
     expect(find.byType(SuiteListView), findsOneWidget);
   });
 
-  testWidgets("Verifica se o título do AppBar exibe o nome do motel",
+  testWidgets("Checks if the AppBar title displays the motel name",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(SuitePage(
       motel: motel,
@@ -49,7 +48,7 @@ void main() {
     expect(titleText.data, equals(motel.fantasia));
   });
 
-  testWidgets("Verifica se o botão de voltar fecha a página",
+  testWidgets("Check if the back button closes the page",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(SuitePage(
       motel: motel,
@@ -60,6 +59,6 @@ void main() {
     await tester.tap(find.byIcon(Icons.arrow_back_rounded));
     await tester.pumpAndSettle();
 
-    expect(find.byType(SuitePage), findsNothing); // A página deve ser fechada
+    expect(find.byType(SuitePage), findsNothing);
   });
 }

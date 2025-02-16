@@ -21,7 +21,8 @@ void main() {
     );
   }
 
-  testWidgets("Verifica se os elementos principais são renderizados",
+  testWidgets(
+      "Checks whether the main elements of the ImageGridPage are rendered",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(ImageGridPage(photos: photos)));
 
@@ -30,14 +31,14 @@ void main() {
     expect(find.byType(GridView), findsOneWidget);
   });
 
-  testWidgets("Verifica se a GridView exibe todas as imagens corretamente",
+  testWidgets("Check if GridView displays all images correctly",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(ImageGridPage(photos: photos)));
 
     expect(find.byType(CachedNetworkImage), findsNWidgets(photos.length));
   });
 
-  testWidgets("Verifica se ao tocar em uma imagem o modal é aberto",
+  testWidgets("Checks whether when touching an image the modal opens",
       (WidgetTester tester) async {
     await tester.pumpWidget(makeTestableWidget(ImageGridPage(photos: photos)));
 
