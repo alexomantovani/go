@@ -46,51 +46,66 @@ class SuiteListView extends StatelessWidget {
               child: PageView.builder(
                 controller: pageController,
                 scrollDirection: Axis.horizontal,
-                itemCount: motels[index].suites!.length,
+                itemCount: motels[index].suites?.length ?? 0,
                 itemBuilder: (context, secondaryIndex) => Padding(
                   padding: const EdgeInsets.only(right: 12.0),
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ImageGridPage(
-                            photos: motels[index].suites![secondaryIndex].fotos,
-                          ),
-                        )),
+                        onTap: () {
+                          final suites = motels[index].suites;
+                          if (suites == null ||
+                              suites.isEmpty ||
+                              secondaryIndex >= suites.length) {
+                            return;
+                          }
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ImageGridPage(
+                              photos: suites[secondaryIndex].fotos,
+                            ),
+                          ));
+                        },
                         child: SuiteDisplay(
                           image: motels[index]
-                              .suites![secondaryIndex]
-                              .fotos!
-                              .first,
-                          name: motels[index].suites![secondaryIndex].nome,
+                                  .suites![secondaryIndex]
+                                  .fotos
+                                  ?.first ??
+                              '',
+                          name:
+                              motels[index].suites?[secondaryIndex].nome ?? '',
                         ),
                       ),
                       const SizedBox(height: 10.0),
                       GestureDetector(
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => CategoryItemPage(
-                              suite: motels[index]
-                                  .suites!
-                                  .map((suite) => SuiteModel.fromEntity(suite))
-                                  .toList()[secondaryIndex],
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CategoryItemPage(
+                                suite: motels[index]
+                                    .suites!
+                                    .map(
+                                        (suite) => SuiteModel.fromEntity(suite))
+                                    .toList()[secondaryIndex],
+                              ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                         child: SuiteCateogoryItem(
                           categoriaItens: motels[index]
-                              .suites![secondaryIndex]
-                              .categoriaItens,
+                                  .suites?[secondaryIndex]
+                                  .categoriaItens ??
+                              [],
                         ),
                       ),
                       const SizedBox(height: 10.0),
                       SuitePeriodos(
                         periodos: motels[index]
-                            .suites![secondaryIndex]
-                            .periodos!
-                            .map((periodo) => PeriodoModel.fromEntity(periodo))
-                            .toList(),
+                                .suites![secondaryIndex]
+                                .periodos
+                                ?.map((periodo) =>
+                                    PeriodoModel.fromEntity(periodo))
+                                .toList() ??
+                            [],
                       ),
                     ],
                   ),

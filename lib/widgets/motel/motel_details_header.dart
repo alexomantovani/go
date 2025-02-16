@@ -29,14 +29,14 @@ class MotelDetailsHeader extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    provider.motel!.fantasia ?? '',
+                    provider.motel?.fantasia ?? '',
                     style: context.textTheme.titleSmall!.copyWith(
                       color: Styles.kPrimaryText,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    provider.motel!.bairro ?? '',
+                    provider.motel?.bairro ?? '',
                     style: TextTheme.of(context)
                         .bodySmall!
                         .copyWith(fontSize: 10.0),
@@ -47,8 +47,8 @@ class MotelDetailsHeader extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           MotelDetailsBody(
-            lowestPrice: provider.lowestPrice!,
-            discount: provider.discount!,
+            lowestPrice: provider.lowestPrice ?? 0,
+            discount: provider.discount ?? 0,
           ),
         ],
       ),

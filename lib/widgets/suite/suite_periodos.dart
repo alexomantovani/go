@@ -14,41 +14,39 @@ class SuitePeriodos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: periodos!.length,
-        itemBuilder: (context, index) => Container(
-          decoration: BoxDecoration(
-            color: Styles.kStandardWhite,
-            borderRadius: BorderRadius.circular(6.0),
-          ),
-          padding: EdgeInsets.all(12.0),
-          margin: EdgeInsets.only(bottom: 10.0),
-          child: TextButton(
-            onPressed: () => context.underConstructionPage,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      periodos![index].tempoFormatado!,
-                      style: context.textTheme.bodyMedium,
-                    ),
-                    Text(
-                      'R\$${periodos![index].valorTotal!.toStringAsFixed(2).replaceAll('.', ',')}',
-                      style: context.textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: Styles.kPrimaryText,
-                ),
-              ],
-            ),
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: periodos!.length,
+      itemBuilder: (context, index) => Container(
+        decoration: BoxDecoration(
+          color: Styles.kStandardWhite,
+          borderRadius: BorderRadius.circular(6.0),
+        ),
+        padding: EdgeInsets.all(12.0),
+        margin: EdgeInsets.only(bottom: 10.0),
+        child: TextButton(
+          onPressed: () => context.underConstructionPage,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    periodos![index].tempoFormatado!,
+                    style: context.textTheme.bodyMedium,
+                  ),
+                  Text(
+                    'R\$${periodos![index].valorTotal!.toStringAsFixed(2).replaceAll('.', ',')}',
+                    style: context.textTheme.bodyMedium,
+                  ),
+                ],
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Styles.kPrimaryText,
+              ),
+            ],
           ),
         ),
       ),

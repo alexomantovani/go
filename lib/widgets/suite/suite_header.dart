@@ -24,22 +24,25 @@ class SuiteHeader extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: CachedNetworkImage(
-              imageUrl: motel.logo!,
-              fit: BoxFit.cover,
-              height: 40,
-            ),
+            child: motel.logo != null
+                ? CachedNetworkImage(
+                    imageUrl: motel.logo!,
+                    fit: BoxFit.cover,
+                    height: 40,
+                  )
+                : const SizedBox.shrink(),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                motel.fantasia!,
+                motel.fantasia ?? 'fantasia',
                 style: context.textTheme.titleLarge!
                     .copyWith(color: Styles.kPrimaryText),
               ),
               const SizedBox(width: 8.0),
-              Text(motel.bairro!, style: context.textTheme.bodyMedium!),
+              Text(motel.bairro ?? 'bairro',
+                  style: context.textTheme.bodyMedium!),
               const SizedBox(width: 8.0),
               GestureDetector(
                 onTap: () => CoreUtils.openModal(
@@ -152,7 +155,7 @@ class SuiteHeader extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8.0),
-                    Text(motel.qtdAvaliacoes.toString(),
+                    Text(motel.qtdAvaliacoes?.toString() ?? '',
                         style: context.textTheme.titleSmall!),
                     const SizedBox(width: 8.0),
                     Text('avaliações', style: context.textTheme.titleSmall!),

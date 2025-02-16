@@ -24,6 +24,8 @@ class ImageGridPage extends StatelessWidget {
         ),
         itemCount: photos!.length,
         itemBuilder: (context, index) => GestureDetector(
+          key: ValueKey('image_grid_item_$index'),
+          behavior: HitTestBehavior.opaque,
           onTap: () => CoreUtils.openModal(
             context: context,
             child: ModalCarousel(

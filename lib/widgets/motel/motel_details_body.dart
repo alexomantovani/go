@@ -28,7 +28,7 @@ class MotelDetailsBody extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  '${discount.toString().substring(0, 2)}% de desconto',
+                  '${discount == 0 ? '0' : discount.toString().substring(0, 2)}% de desconto',
                   style: context.textTheme.titleSmall!.copyWith(
                     decoration: TextDecoration.underline,
                     color: Styles.kPrimaryText,

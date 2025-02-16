@@ -17,6 +17,7 @@ class SuiteDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: const Key('suite_display_container'),
       decoration: BoxDecoration(
         color: Styles.kStandardWhite,
         borderRadius: BorderRadius.circular(6.0),
