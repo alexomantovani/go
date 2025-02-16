@@ -59,11 +59,26 @@ class MotelCarouselProvider extends ChangeNotifier {
         .firstOrNull;
   }
 
+  // void setLowestPrice() {
+  //   _lowestPrice = _motel!.suites
+  //       ?.expand((suite) => suite.periodos ?? <PeriodoModel>[])
+  //       .where((p) => p.valorTotal != null)
+  //       .map((p) => p.valorTotal)
+  //       .reduce((a, b) => (a! < b!) ? a : b);
+  // }
+
   void setLowestPrice() {
     _lowestPrice = _motel!.suites
-        ?.expand((suite) => suite.periodos ?? <PeriodoModel>[])
-        .where((p) => p.valorTotal != null)
-        .map((p) => p.valorTotal)
-        .reduce((a, b) => (a! < b!) ? a : b);
+                ?.expand((suite) => suite.periodos ?? <PeriodoModel>[])
+                .where((p) => p.valorTotal != null)
+                .map((p) => p.valorTotal)
+                .isNotEmpty ==
+            true
+        ? _motel!.suites!
+            .expand((suite) => suite.periodos ?? <PeriodoModel>[])
+            .where((p) => p.valorTotal != null)
+            .map((p) => p.valorTotal)
+            .reduce((a, b) => (a! < b!) ? a : b)
+        : null;
   }
 }

@@ -27,19 +27,16 @@ class CustomFloatingButton extends StatelessWidget {
         ),
         backgroundColor: Styles.kStandardWhite,
         onPressed: onPressed,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                iconData,
-                color: Styles.kPrimaryRed,
-              ),
-              Text(label, style: context.textTheme.titleMedium),
-            ],
-          ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              iconData,
+              color: Styles.kPrimaryRed,
+            ),
+            Text(label, style: context.textTheme.titleMedium),
+          ],
         ),
       ),
     );
