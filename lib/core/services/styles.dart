@@ -11,6 +11,7 @@ class Styles {
   static const Color kPrimaryGrey = Color(0xFFC2C2C2);
   static const Color kPrimaryText = Color(0xFF4A4A4A);
   static const Color kPrimaryPale = Color(0xFFF0F0F0);
+  static const Color kPrimaryAuthCard = Color(0xFF585858);
   static const Color kSecondaryPale = Color(0xFFF8F9FB);
   static const Color kStandardWhite = Color(0xFFFFFFFF);
   static const Color kStandardBlack = Color(0xFF000000);

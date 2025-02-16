@@ -47,7 +47,7 @@ class MotelDetailsBody extends StatelessWidget {
               ],
             ),
             Text(
-              'a partir de R\$$lowestPrice',
+              'a partir de R\$${lowestPrice.toStringAsFixed(2).replaceAll('.', ',')}',
               style: context.textTheme.bodySmall!.copyWith(fontSize: 11),
             ),
             const SizedBox(height: 8.0),
