@@ -11,13 +11,16 @@ Este aplicativo apresenta um guia motéis, permitindo o usuário visualizar com 
 - **Gerenciamento de estado:** flutter_bloc e provider
 - **Adaptação no Backend:** Foi desenvolvido um endpoint com uma micro API em Node.js serveless hospedada no Firebase functions.
 
-## 📸 Capturas de Tela
+## ▶️ YouTube - iOS
 
 <p align="center">
-  <img src="assets/1000074340.png" width="300" height="650"/>
-  <img src="assets/1000074341.png" width="300" height="650"/>
-  <img src="assets/1000074342.png" width="300" height="650"/>
-  <img src="assets/1000074343.png" width="300" height="650"/>
+  <a href= "https://youtube.com/shorts/8xOr-cGAdMA"><img src="https://img.youtube.com/vi/8xOr-cGAdMA/maxresdefault.jpg" alt="Guia de motéis Go - iPhone" border="0" width=55% height=55%></a>
+</p>
+
+## ▶️ YouTube - Android
+
+<p align="center">
+  <a href= "https://youtube.com/shorts/BOtxeuN0Z4M"><img src="https://img.youtube.com/vi/BOtxeuN0Z4M/maxresdefault.jpg" alt="Guia de motéis Go - Android" border="0" width=55% height=55%></a>
 </p>
 
 ## ✅ Unit Tests
